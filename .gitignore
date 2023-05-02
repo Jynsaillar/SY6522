@@ -32,5 +32,5 @@
 *.app
 
 # CMake/library build files
-./_install/
-./build-static/
+_install/*
+build-static/*

@@ -13,9 +13,9 @@ namespace Jynsaillar::SY6522
         SY6522();
         const std::map<int, Jynsaillar::ChipPins::ChipPin> &Pins = _pins;
 
-        void (*Write)(uint8_t, uint8_t); // Function to write to pin
+        void (*DigitalWrite)(uint8_t, uint8_t); // Function to write to pin
         void (*Write)(int, int); // Function to write to pin
-        int (*Read)(void);       // Function to read pin state
+        int (*Read)(uint8_t);       // Function to read pin state
 
     private:
         std::map<int, Jynsaillar::ChipPins::ChipPin> _pins;

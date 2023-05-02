@@ -1,0 +1,3 @@
+cmake -G "MinGW Makefiles" -S . -B build-static -DBUILD_SHARED_LIBS=NO -DCMAKE_BUILD_TYPE=Release -DCMAKE_RELEASE_POSTFIX=_static -DCMAKE_PREFIX_PATH="<path to library>/ChipPins/_install"
+cmake --build build-static
+cmake --install build-static --prefix _install

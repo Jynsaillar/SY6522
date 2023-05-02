@@ -8,13 +8,15 @@ namespace Jynsaillar::SY6522
 {
     class SY6522
     {
-        public:
-            SY6522();
-            const std::map<int, Jynsaillar::ChipPins::ChipPin>& Pins = _pins;
-            int MyVal;
+    public:
+        SY6522();
+        const std::map<int, Jynsaillar::ChipPins::ChipPin> &Pins = _pins;
 
-        private:
-            std::map<int, Jynsaillar::ChipPins::ChipPin> _pins;
+        void (*Write)(int, int); // Function to write to pin
+        int (*Read)(void);       // Function to read pin state
+
+    private:
+        std::map<int, Jynsaillar::ChipPins::ChipPin> _pins;
     };
 } // namespace Jynsaillar::SY6522
 

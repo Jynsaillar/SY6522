@@ -66,15 +66,15 @@ namespace Jynsaillar::SY6522
         for (unsigned int i = 0; i < *PinsSize; i++)
         {
             auto pinPointer = (Pins + i);
-            if (pinPointer->Name == "CS1")
+            if (strcmp(pinPointer->Name, "CS1") == 0)
                 ptrCS1 = pinPointer;
-            if (pinPointer->Name == "CS2")
+            if (strcmp(pinPointer->Name, "CS2") == 0)
                 ptrCS2 = pinPointer;
         }
         ptrCS1->Signal = Signals::High;
         ptrCS2->Signal = Signals::Low;
-        this->DigitalWrite(ptrCS1->ProxyPin, Signals::High);
-        this->DigitalWrite(ptrCS2->ProxyPin, Signals::Low);
+        this->DigitalWrite(ptrCS1->ProxyPin, ptrCS1->Signal);
+        this->DigitalWrite(ptrCS2->ProxyPin, ptrCS2->Signal);
     }
 
 } // namespace Jynsaillar::SY6522

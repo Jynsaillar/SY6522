@@ -67,8 +67,10 @@ namespace Jynsaillar::SY6522
 
         ptrCLK2->Signal = Signals::High;
         this->DigitalWrite(ptrCLK2->ProxyPin, ptrCLK2->Signal);
+        this->Delay(100); // Wait 100ms, only if function defined externally
         ptrCLK2->Signal = Signals::Low;
         this->DigitalWrite(ptrCLK2->ProxyPin, ptrCLK2->Signal);
+        this->Delay(100); // Wait 100ms, only if function defined externally
     }
 
     void SY6522::EnableChip()

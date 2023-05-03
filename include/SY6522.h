@@ -19,6 +19,7 @@ namespace Jynsaillar::SY6522
         void (*DigitalWrite)(uint8_t, uint8_t); // Function to write to pin
         void (*Write)(int, int);                // Function to write to pin
         int (*Read)(uint8_t);                   // Function to read pin state
+        void (*Delay)(unsigned long);
 
         void PulseClock();
         void EnableChip();

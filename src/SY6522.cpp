@@ -71,6 +71,8 @@ namespace Jynsaillar::SY6522
             if (pinPointer->Name == "CS2")
                 ptrCS2 = pinPointer;
         }
+        *ptrCS1 = Signals::High;
+        *ptrCS2 = Signals::Low;
         this->DigitalWrite(ptrCS1->ProxyPin, Signals::High);
         this->DigitalWrite(ptrCS2->ProxyPin, Signals::Low);
     }

@@ -20,6 +20,7 @@ namespace Jynsaillar::SY6522
         int (*Read)(uint8_t);                   // Function to read pin state
 
         void PulseClock();
+        void EnableChip();
         // End of Functions
 
     private:

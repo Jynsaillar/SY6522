@@ -57,6 +57,18 @@ namespace Jynsaillar::SY6522
 
     void SY6522::PulseClock()
     {
+        ChipPins::ChipPin *ptrCLK2 = nullptr;
+        for (unsigned int i = 0; i < *PinsSize; i++)
+        {
+            auto pinPointer = (Pins + i);
+            if (strcmp(pinPointer->Name, "CLK2") == 0)
+                ptrCS1 = pinPointer;
+        }
+
+        ptrCLK2->Signal = Signals::High;
+        this->DigitalWrite(ptrCLK2->ProxyPin, ptrCLK2->Signal);
+        ptrCLK2->Signal = Signals::Low;
+        this->DigitalWrite(ptrCLK2->ProxyPin, ptrCLK2->Signal);
     }
 
     void SY6522::EnableChip()

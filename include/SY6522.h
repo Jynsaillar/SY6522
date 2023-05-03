@@ -11,8 +11,8 @@ namespace Jynsaillar::SY6522
     public:
         SY6522();
 
-        ChipPins::ChipPin *const Pins = pins;           // Pointer to private IC pin array (fixed size)
-        const unsigned int *const PinsSize = &pinsSize; // Pointer to private constant which defines the number of elements in the pins array
+        ChipPins::ChipPin *const Pins = _pins;           // Pointer to private IC pin array (fixed size)
+        const unsigned int *const PinsSize = &_pinsSize; // Pointer to private constant which defines the number of elements in the pins array
 
         void (*DigitalWrite)(uint8_t, uint8_t); // Function to write to pin
         void (*Write)(int, int);                // Function to write to pin

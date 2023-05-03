@@ -3,6 +3,7 @@
 
 #include <ChipPins.h>
 #include <cstdint>
+#include <cstring>
 
 namespace Jynsaillar::SY6522
 {

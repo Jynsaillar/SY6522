@@ -14,9 +14,13 @@ namespace Jynsaillar::SY6522
         ChipPins::ChipPin *const Pins = _pins;           // Pointer to private IC pin array (fixed size)
         const unsigned int *const PinsSize = &_pinsSize; // Pointer to private constant which defines the number of elements in the pins array
 
+        // Start of Functions
         void (*DigitalWrite)(uint8_t, uint8_t); // Function to write to pin
         void (*Write)(int, int);                // Function to write to pin
         int (*Read)(uint8_t);                   // Function to read pin state
+
+        void PulseClock();
+        // End of Functions
 
     private:
         inline static const unsigned int _pinsSize = 40;

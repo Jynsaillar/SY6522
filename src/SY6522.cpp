@@ -55,4 +55,24 @@ namespace Jynsaillar::SY6522
         }
     }
 
+    void SY6522::PulseClock()
+    {
+    }
+
+    void SY6522::EnableChip()
+    {
+        ChipPins::ChipPin *ptrCS2 = nullptr;
+        ChipPins::ChipPin *ptrCS1 = nullptr;
+        for (unsigned int i = 0; i < *PinsSize; i++)
+        {
+            auto pinPointer = (Pins + i);
+            if (pinPointer->Name == "CS1")
+                ptrCS1 = pinPointer;
+            if (pinPointer->Name == "CS2")
+                ptrCS2 = pinPointer;
+        }
+        this->DigitalWrite(ptrCS1->ProxyPin, Signals::High);
+        this->DigitalWrite(ptrCS2->ProxyPin, Signals::Low);
+    }
+
 } // namespace Jynsaillar::SY6522

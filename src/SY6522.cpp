@@ -61,7 +61,7 @@ namespace Jynsaillar::SY6522
         for (unsigned int i = 0; i < *PinsSize; i++)
         {
             auto pinPointer = (Pins + i);
-            if (strcmp(pinPointer->Name, "CLK2") == 0)
+            if (strcmp(pinPointer->Name, "CLK2/EN") == 0)
                 ptrCLK2 = pinPointer;
         }
 

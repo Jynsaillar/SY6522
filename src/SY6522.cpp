@@ -62,7 +62,7 @@ namespace Jynsaillar::SY6522
         {
             auto pinPointer = (Pins + i);
             if (strcmp(pinPointer->Name, "CLK2") == 0)
-                ptrCS1 = pinPointer;
+                ptrCLK2 = pinPointer;
         }
 
         ptrCLK2->Signal = Signals::High;

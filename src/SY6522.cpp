@@ -7,8 +7,8 @@ namespace Jynsaillar::SY6522
     {
         ChipPins::ChipPin pins[40]{
             // Pin Number, Proxy Pin, Pin Name, Enabled, PinType, ActivationType, Signal
-            ChipPins::ChipPin{2, 255, "PA0", true, PinTypes::PinType::Digital, ActivationTypes::ActivationType::ActiveHigh, Signals::Signal::Low},
             ChipPins::ChipPin{1, 255, "VSS", true, PinTypes::PinType::Net, ActivationTypes::ActivationType::None, Signals::Signal::Low},
+            ChipPins::ChipPin{2, 255, "PA0", true, PinTypes::PinType::Digital, ActivationTypes::ActivationType::ActiveHigh, Signals::Signal::Low},
             ChipPins::ChipPin{3, 255, "PA1", true, PinTypes::PinType::Digital, ActivationTypes::ActivationType::ActiveHigh, Signals::Signal::Low},
             ChipPins::ChipPin{4, 255, "PA2", true, PinTypes::PinType::Digital, ActivationTypes::ActivationType::ActiveHigh, Signals::Signal::Low},
             ChipPins::ChipPin{5, 255, "PA3", true, PinTypes::PinType::Digital, ActivationTypes::ActivationType::ActiveHigh, Signals::Signal::Low},

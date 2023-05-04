@@ -165,4 +165,49 @@ namespace Jynsaillar::SY6522
         this->DigitalWrite(ptrRS0->ProxyPin, ptrRS0->Signal);
     }
 
+    void SY6522::SetDataBus(uint8_t d7, uint8_t d6, uint8_t d5, uint8_t d4, uint8_t d3, uint8_t d2, uint8_t d1, uint8_t d0)
+    {
+        ChipPins::ChipPin *ptrD7 = nullptr;
+        ChipPins::ChipPin *ptrD6 = nullptr;
+        ChipPins::ChipPin *ptrD5 = nullptr;
+        ChipPins::ChipPin *ptrD4 = nullptr;
+        ChipPins::ChipPin *ptrD3 = nullptr;
+        ChipPins::ChipPin *ptrD2 = nullptr;
+        ChipPins::ChipPin *ptrD1 = nullptr;
+        ChipPins::ChipPin *ptrD0 = nullptr;
+        for (unsigned int i = 0; i < *PinsSize; i++)
+        {
+            auto pinPointer = (Pins + i);
+            if (strcmp(pinPointer->Name, "D7") == 0)
+            {
+                ptrD7 = pinPointer;
+                ptrD6 = ptrD7 + 1;
+                ptrD5 = ptrD7 + 2;
+                ptrD4 = ptrD7 + 3;
+                ptrD3 = ptrD7 + 4;
+                ptrD2 = ptrD7 + 5;
+                ptrD1 = ptrD7 + 6;
+                ptrD0 = ptrD7 + 7;
+                break;
+            }
+        }
+
+        ptrD7->Signal = d7;
+        ptrD6->Signal = d6;
+        ptrD5->Signal = d5;
+        ptrD4->Signal = d4;
+        ptrD3->Signal = d3;
+        ptrD2->Signal = d2;
+        ptrD1->Signal = d1;
+        ptrD0->Signal = d0;
+        this->DigitalWrite(ptrD7->ProxyPin, ptrD7->Signal);
+        this->DigitalWrite(ptrD6->ProxyPin, ptrD6->Signal);
+        this->DigitalWrite(ptrD5->ProxyPin, ptrD5->Signal);
+        this->DigitalWrite(ptrD4->ProxyPin, ptrD4->Signal);
+        this->DigitalWrite(ptrD3->ProxyPin, ptrD3->Signal);
+        this->DigitalWrite(ptrD2->ProxyPin, ptrD2->Signal);
+        this->DigitalWrite(ptrD1->ProxyPin, ptrD1->Signal);
+        this->DigitalWrite(ptrD0->ProxyPin, ptrD0->Signal);
+    }
+
 } // namespace Jynsaillar::SY6522

@@ -170,14 +170,14 @@ namespace Jynsaillar::SY6522
         // Bit shifts the bits out of the dBitFlags 'byte' we pass as parameter, and forwards them
         // to the other SetDataBus(...) call which takes 8 individual 'bytes' to set signal on the 8 data bus ports D7 to D0
         this->SetDataBus(
-            ((dBitFlags >> 0) & 0x01), // D7
-            ((dBitFlags >> 1) & 0x01), // D6
-            ((dBitFlags >> 2) & 0x01), // D5
-            ((dBitFlags >> 3) & 0x01), // D4
-            ((dBitFlags >> 4) & 0x01), // D3
-            ((dBitFlags >> 5) & 0x01), // D2
-            ((dBitFlags >> 6) & 0x01), // D1
-            ((dBitFlags >> 7) & 0x01)  // D0
+            ((dBitFlags >> 7) & 0x01), // D7
+            ((dBitFlags >> 6) & 0x01), // D6
+            ((dBitFlags >> 5) & 0x01), // D5
+            ((dBitFlags >> 4) & 0x01), // D4
+            ((dBitFlags >> 3) & 0x01), // D3
+            ((dBitFlags >> 2) & 0x01), // D2
+            ((dBitFlags >> 1) & 0x01), // D1
+            ((dBitFlags >> 0) & 0x01)  // D0
         );
     }
 

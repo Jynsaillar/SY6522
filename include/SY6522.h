@@ -19,10 +19,12 @@ namespace Jynsaillar::SY6522
         void (*DigitalWrite)(uint8_t, uint8_t); // Function to write to pin
         void (*Write)(int, int);                // Function to write to pin
         int (*Read)(uint8_t);                   // Function to read pin state
-        void (*Delay)(unsigned long);
+        void (*Delay)(unsigned long);           // Function to sleep for <n> ms
 
-        void PulseClock();
-        void EnableChip();
+        void PulseClock(); // Clock goes high, sleep, low, sleep
+        void EnableChip(); // Pulls CS1 high, CS2 low -> chip active
+        void ReadMode();   // R/W high -> chip is in read mode
+        void WriteMode();  // R/W low -> chip is in write mode
         // End of Functions
 
     private:

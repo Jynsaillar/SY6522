@@ -165,6 +165,22 @@ namespace Jynsaillar::SY6522
         this->DigitalWrite(ptrRS0->ProxyPin, ptrRS0->Signal);
     }
 
+    void SY6522::SetDataBus(uint8_t dBitFlags)
+    {
+        // Bit shifts the bits out of the dBitFlags 'byte' we pass as parameter, and forwards them
+        // to the other SetDataBus(...) call which takes 8 individual 'bytes' to set signal on the 8 data bus ports D7 to D0
+        this->SetDataBus(
+            ((dBitFlags >> 0) & 0x01), // D7
+            ((dBitFlags >> 1) & 0x01), // D6
+            ((dBitFlags >> 2) & 0x01), // D5
+            ((dBitFlags >> 3) & 0x01), // D4
+            ((dBitFlags >> 4) & 0x01), // D3
+            ((dBitFlags >> 5) & 0x01), // D2
+            ((dBitFlags >> 6) & 0x01), // D1
+            ((dBitFlags >> 7) & 0x01)  // D0
+        );
+    }
+
     void SY6522::SetDataBus(uint8_t d7, uint8_t d6, uint8_t d5, uint8_t d4, uint8_t d3, uint8_t d2, uint8_t d1, uint8_t d0)
     {
         ChipPins::ChipPin *ptrD7 = nullptr;

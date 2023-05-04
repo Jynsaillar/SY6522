@@ -155,10 +155,10 @@ namespace Jynsaillar::SY6522
                 break;
             }
         }
-        ptrRS3->Signal = rs3;
-        ptrRS2->Signal = rs2;
-        ptrRS1->Signal = rs1;
-        ptrRS0->Signal = rs0;
+        ptrRS3->Signal = (rs3 == 1) ? Signals::High : Signals::Low;
+        ptrRS2->Signal = (rs2 == 1) ? Signals::High : Signals::Low;
+        ptrRS1->Signal = (rs1 == 1) ? Signals::High : Signals::Low;
+        ptrRS0->Signal = (rs0 == 1) ? Signals::High : Signals::Low;
         this->DigitalWrite(ptrRS3->ProxyPin, ptrRS3->Signal);
         this->DigitalWrite(ptrRS2->ProxyPin, ptrRS2->Signal);
         this->DigitalWrite(ptrRS1->ProxyPin, ptrRS1->Signal);
@@ -208,14 +208,14 @@ namespace Jynsaillar::SY6522
             }
         }
 
-        ptrD7->Signal = d7;
-        ptrD6->Signal = d6;
-        ptrD5->Signal = d5;
-        ptrD4->Signal = d4;
-        ptrD3->Signal = d3;
-        ptrD2->Signal = d2;
-        ptrD1->Signal = d1;
-        ptrD0->Signal = d0;
+        ptrD7->Signal = (d7 == 1) ? Signals::High : Signals::Low;
+        ptrD6->Signal = (d6 == 1) ? Signals::High : Signals::Low;
+        ptrD5->Signal = (d5 == 1) ? Signals::High : Signals::Low;
+        ptrD4->Signal = (d4 == 1) ? Signals::High : Signals::Low;
+        ptrD3->Signal = (d3 == 1) ? Signals::High : Signals::Low;
+        ptrD2->Signal = (d2 == 1) ? Signals::High : Signals::Low;
+        ptrD1->Signal = (d1 == 1) ? Signals::High : Signals::Low;
+        ptrD0->Signal = (d0 == 1) ? Signals::High : Signals::Low;
         this->DigitalWrite(ptrD7->ProxyPin, ptrD7->Signal);
         this->DigitalWrite(ptrD6->ProxyPin, ptrD6->Signal);
         this->DigitalWrite(ptrD5->ProxyPin, ptrD5->Signal);

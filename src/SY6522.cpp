@@ -101,7 +101,7 @@ namespace Jynsaillar::SY6522
                 ptrRW = pinPointer;
         }
         ptrRW->Signal = Signals::High;
-        this->DigitalWrite(ptrRW->ProxyPin, ptrCS1->Signal);
+        this->DigitalWrite(ptrRW->ProxyPin, ptrRW->Signal);
     }
 
 } // namespace Jynsaillar::SY6522

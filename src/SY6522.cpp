@@ -226,4 +226,17 @@ namespace Jynsaillar::SY6522
         this->DigitalWrite(ptrD0->ProxyPin, ptrD0->Signal);
     }
 
+    ChipPins::ChipPin *const SY6522::FindPinByName(const char *pinName)
+    {
+        for (unsigned int i = 0; i < *PinsSize; i++)
+        {
+            auto pinPointer = (Pins + i);
+            if (strcmp(pinPointer->Name, pinName) == 0)
+            {
+                return pinPointer;
+            }
+        }
+        return nullptr;
+    }
+
 } // namespace Jynsaillar::SY6522

@@ -28,6 +28,8 @@ namespace Jynsaillar::SY6522
         void RegisterSelect(uint8_t rs3, uint8_t rs2, uint8_t rs1, uint8_t rs0);                 // rs3 to rs0 signal which register on the chip is to be written to/read from
         void SetDataBus(uint8_t);                                                                // Sets D7 to D0 with bit flags, each bit represents D<X> -> e.g. SetDataBus(0x00001111) sets D7 to D4 = 0, D3 to D0 = 1
         void SetDataBus(uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t); // Sets D7 to D0 explicitly
+
+        ChipPins::ChipPin *const FindPinByName(const char* pinName); // Returns a pointer to a pin with 'pinName', e.g. FindPinByName("CS1");
         // End of Functions
 
     private:

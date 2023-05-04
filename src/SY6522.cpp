@@ -117,4 +117,52 @@ namespace Jynsaillar::SY6522
         this->DigitalWrite(ptrRW->ProxyPin, ptrRW->Signal);
     }
 
+    void SY6522::RegisterSelect(uint8_t rs3, uint8_t rs2, uint8_t rs1, uint8_t rs0)
+    {
+        /*
+        RS3 | RS2 | RS1 | RS0 || Register || Write Mode           || Read Mode
+        0   | 0   | 0   | 0   || ORB, IRB || Output Register B    || Input Register B
+        0   | 0   | 0   | 1   || ORA, IRA || Output Register A    || Input Register A
+        0   | 0   | 1   | 0   || DDRB     || Data Direction Register B
+        0   | 0   | 1   | 1   || DDRA     || Data Direction Register A
+        0   | 1   | 0   | 0   || T1C-L    || T1 Low-Order Latches || T1 Low-Order Counter // There's a datasheet from 1978 that lists this as T1L-L, which is incorrect
+        0   | 1   | 0   | 1   || T1C-H    || T1 High-Order Counter
+        0   | 1   | 1   | 0   || T1L-L    || T1 Low-Order Latches
+        0   | 1   | 1   | 1   || T1L-H    || T1 High-Order Latches
+        1   | 0   | 0   | 0   || T2C-L    || T2 Low-Order Latches || T2 Low-Order Counter
+        1   | 0   | 0   | 1   || T2C-H    || T2 High-Order Counter
+        1   | 0   | 1   | 0   || SR       || Shift Register
+        1   | 0   | 1   | 1   || ACR      || Auxiliary Control Register
+        1   | 1   | 0   | 0   || PCR      || Peripheral Control Register
+        1   | 1   | 0   | 1   || IFR      || Interrupt Flag Register
+        1   | 1   | 1   | 0   || IER      || Interrupt Enable Register
+        1   | 1   | 1   | 1   || ORA/IRA  || See configuration for ORA, IRA (0001), but without handshake
+        */
+
+        ChipPins::ChipPin *ptrRS3 = nullptr;
+        ChipPins::ChipPin *ptrRS2 = nullptr;
+        ChipPins::ChipPin *ptrRS1 = nullptr;
+        ChipPins::ChipPin *ptrRS0 = nullptr;
+        for (unsigned int i = 0; i < *PinsSize; i++)
+        {
+            auto pinPointer = (Pins + i);
+            if (strcmp(pinPointer->Name, "RS3") == 0)
+            {
+                ptrRS3 = pinPointer;
+                ptrRS2 = ptrRS3 + 1;
+                ptrRS1 = ptrRS3 + 2;
+                ptrRS0 = ptrRS3 + 3;
+                break;
+            }
+        }
+        ptrRS3->Signal = rs3;
+        ptrRS2->Signal = rs2;
+        ptrRS1->Signal = rs1;
+        ptrRS0->Signal = rs0;
+        this->DigitalWrite(ptrRS3->ProxyPin, ptrRS3->Signal);
+        this->DigitalWrite(ptrRS2->ProxyPin, ptrRS2->Signal);
+        this->DigitalWrite(ptrRS1->ProxyPin, ptrRS1->Signal);
+        this->DigitalWrite(ptrRS0->ProxyPin, ptrRS0->Signal);
+    }
+
 } // namespace Jynsaillar::SY6522

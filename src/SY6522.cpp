@@ -149,9 +149,9 @@ namespace Jynsaillar::SY6522
             if (strcmp(pinPointer->Name, "RS3") == 0)
             {
                 ptrRS3 = pinPointer;
-                ptrRS2 = ptrRS3 + 1;
-                ptrRS1 = ptrRS3 + 2;
-                ptrRS0 = ptrRS3 + 3;
+                ptrRS2 = (Pins + i + 1);
+                ptrRS1 = (Pins + i + 2);
+                ptrRS0 = (Pins + i + 3);
                 break;
             }
         }
@@ -197,13 +197,13 @@ namespace Jynsaillar::SY6522
             if (strcmp(pinPointer->Name, "D7") == 0)
             {
                 ptrD7 = pinPointer;
-                ptrD6 = ptrD7 + 1;
-                ptrD5 = ptrD7 + 2;
-                ptrD4 = ptrD7 + 3;
-                ptrD3 = ptrD7 + 4;
-                ptrD2 = ptrD7 + 5;
-                ptrD1 = ptrD7 + 6;
-                ptrD0 = ptrD7 + 7;
+                ptrD6 = (Pins + i + 1);
+                ptrD5 = (Pins + i + 2);
+                ptrD4 = (Pins + i + 3);
+                ptrD3 = (Pins + i + 4);
+                ptrD2 = (Pins + i + 5);
+                ptrD1 = (Pins + i + 6);
+                ptrD0 = (Pins + i + 7);
                 break;
             }
         }

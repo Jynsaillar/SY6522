@@ -91,4 +91,17 @@ namespace Jynsaillar::SY6522
         this->DigitalWrite(ptrCS2->ProxyPin, ptrCS2->Signal);
     }
 
+    void SY6522::ReadMode()
+    {
+        ChipPins::ChipPin *ptrRW = nullptr;
+        for (unsigned int i = 0; i < *PinsSize; i++)
+        {
+            auto pinPointer = (Pins + i);
+            if (strcmp(pinPointer->Name, "RW") == 0)
+                ptrRW = pinPointer;
+        }
+        ptrRW->Signal = Signals::High;
+        this->DigitalWrite(ptrRW->ProxyPin, ptrCS1->Signal);
+    }
+
 } // namespace Jynsaillar::SY6522

@@ -25,6 +25,7 @@ namespace Jynsaillar::SY6522
         void EnableChip(); // Pulls CS1 high, CS2 low -> chip active
         void ReadMode();   // R/W high -> chip is in read mode
         void WriteMode();  // R/W low -> chip is in write mode
+        void RegisterSelect(uint8_t rs3, uint8_t rs2, uint8_t rs1, uint8_t rs0); // rs3 to rs0 signal which register on the chip is to be written to/read from
         // End of Functions
 
     private:
